@@ -38,24 +38,25 @@ npm install types-validate-assert
 ## add to project
 
 ```
-import { validateType, assertType } from 'types-validate-assert'
+import validators from 'types-validate-assert'
+const { validateTypes, assertTypes } = validators; 
 ```
 
 ## use
 
 validate a type (returns true/false)
 ```
-validateType.isString('This is a string') // true
-validateType.isString({string: 'This is a string'}) // false
+validateTypes.isString('This is a string') // true
+validateTypes.isString({string: 'This is a string'}) // false
 ```
 assert a type (returns true/TypeError)
 ```
-assertType.isString('This is a string') // true
-assertType.isString({string: 'This is a string'}) // TypeError: Expected type [object String] but got [object Object]
+assertTypes.isString('This is a string') // true
+assertTypes.isString({string: 'This is a string'}) // TypeError: Expected type [object String] but got [object Object]
 ```
 
 ## methods
-Method | validateType | assertType | Assert Error
+Method | validateTypes | assertTypes | Assert Error
 --- | --- | --- | ---
 isString (any) | yes | yes | TypeError: Expected type [object String] but got 'actual value'
 isObject (any) | yes | yes | TypeError: Expected type [object Object] but got 'actual value'
