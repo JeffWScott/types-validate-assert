@@ -10,10 +10,6 @@ export class ValidateTypes {
         return this.getType(value)
     }
     //Validation functions
-    hasKeys(value, keys){
-        if(keys.map(key => key in value).includes(false)) return false;
-        return true;
-    }
     isObject(value){
         if(this.getType(value) === "[object Object]") return true;
         return false;
@@ -51,6 +47,10 @@ export class ValidateTypes {
         let hexRegEx = /([0-9]|[a-f])/gim;
         return (value.match(hexRegEx) || []).length === value.length;
     }
+    hasKeys(value, keys){
+        if(keys.map(key => key in value).includes(false)) return false;
+        return true;
+    }
     isStringWithValue(value){
         if (this.isString(value) && value !== '') return true;
         return false;
@@ -65,7 +65,7 @@ export class ValidateTypes {
     }
     isSpecificClass(value, className){
         if (!this.isObject(value)) return false;
-        if (getClassName(value) !== className) return false;
+        if (this.getClassName(value) !== className) return false;
         return true
     }
 }
